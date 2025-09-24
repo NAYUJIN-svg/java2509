@@ -1,0 +1,23 @@
+package com.nyg;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class connMain {
+
+	public static void main(String[] args) {
+//
+////	 	DB접속정보_conn1
+//		Connection conn = null;
+//
+//		try {
+//			conn = DBConnection.getConnection();
+//		} finally {
+//			// 연결해제
+//		}
+
+		CURDClass crudClass = new CURDClass();
+	}
+
+}

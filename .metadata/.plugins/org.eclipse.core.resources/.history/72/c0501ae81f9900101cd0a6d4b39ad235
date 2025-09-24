@@ -1,0 +1,74 @@
+package com.nyg;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DBConnection {
+// 	DB접속정보_conn1
+	static String URL = "jdbc:mariadb://localhost:3306/employees";
+	static String USER = "root";
+	static String PASSWORD = "1234";
+
+	public static Connection getConnection() {
+		Connection conn = null;
+
+		try {
+
+			conn = DriverManager.getConnection(URL, USER, PASSWORD);
+			System.out.println("--- DB 연결 성공 ----");
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			System.out.println("===== DB 연결 실패=========");
+		}
+
+		return conn;
+
+	}
+
+	public static void close(ResultSet rs, Connection conn, PreparedStatement pstmt) {
+		// TODO Auto-generated method stub
+		try {
+			if (pstmt != null)
+				pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			if (rs != null)
+				rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void close(PreparedStatement pstmt, Connection conn) {
+		try {
+			// TODO Auto-generated method stub
+			if (pstmt != null)
+				pstmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		try {
+			if (conn != null)
+				conn.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}

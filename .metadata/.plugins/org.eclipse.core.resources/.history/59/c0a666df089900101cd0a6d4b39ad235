@@ -1,0 +1,27 @@
+package com.nyg;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class connMain {
+
+	public static void main(String[] args) {
+		
+//	 	DB접속정보
+		String url = "jdbc:mariadb://localhost:3306/employees";
+		String user = "root";
+		String password = "1234";
+		
+		try {
+			
+			Connection conn = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

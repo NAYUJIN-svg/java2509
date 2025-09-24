@@ -1,0 +1,77 @@
+package com.nyg;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class CURDClass {
+
+	public CRUDClass() {
+		
+	// Creat테이블 - create table
+//		createTable();
+		
+		
+		
+	// Read테이블 - select
+		selectTable();
+		
+		
+	
+//	// Update테이블 - update table
+//		updateTable();
+//		
+//		
+//	
+//	// Delete테이블만의 row 삭제 - 
+//		deleteUser();
+//		
+//	// insert
+//		insertUser();
+		
+		
+		
+		
+	}
+
+//	private void insertUser() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	private void deleteUser() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	private void updateTable() {
+//		// TODO Auto-generated method stub
+
+	}
+
+	private void selectTable() {
+		// TODO Auto-generated method stub
+		String sql = "show tables";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			System.out.println("------employees 데이터베이스내의 테이블을 확인 ------");
+
+			while (rs.next()) {
+
+				String talName2 = rs.getString(1);
+				System.out.println("[" + talName2 + "]");
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+
+	}
+}

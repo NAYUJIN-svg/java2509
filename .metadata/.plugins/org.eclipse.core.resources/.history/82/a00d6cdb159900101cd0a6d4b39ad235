@@ -1,0 +1,11 @@
+show tables;
+
+select now();
+
+select * from departments;
+
+create table users(
+	id varchar(5),
+	name varchar(100)
+	
+);
